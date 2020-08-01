@@ -1,14 +1,10 @@
-
-pipeline {
- agent { dockerfile true }
-
+agent { dockerfile true }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                echo 'Building..'
-                bat "mvn clean install"
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
-                   
     }
 }
