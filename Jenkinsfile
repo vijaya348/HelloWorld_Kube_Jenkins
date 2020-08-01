@@ -12,8 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                bat "docker build -f Dockerfile -t helloworld ."
-               bat "docker run -p 8080:8080 -t helloworld"
+                sh "docker build -f Dockerfile -t helloworld ."
+               sh "docker run -p 8080:8080 -t helloworld"
             }
         }
                 
