@@ -8,9 +8,7 @@ pipeline {
                 bat "mvn clean install"
             }
         }
-        
-           
-   stage('Package'){
+     stage('Package'){
       steps {
          bat "docker build -t helloworld ."
          bat "docker images"
@@ -18,7 +16,4 @@ pipeline {
        }
     }         
 }
-
-
-
-
+}
