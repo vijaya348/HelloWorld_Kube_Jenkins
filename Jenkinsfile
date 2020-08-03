@@ -8,12 +8,15 @@ pipeline {
                 bat "mvn clean install"
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                bat "mvn test"
-            }
-        }
-                
+        
+           
+   stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+    }         
     }
 }
+
+
+
