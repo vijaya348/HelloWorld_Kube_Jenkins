@@ -1,10 +1,19 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+   agent { dockerfile true }
+
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'mvn --version'
+                echo 'Building..'
+                bat "mvn clean install"
             }
         }
-    }
+     stage('Package'){
+      steps {
+         sh "docker build -t helloworld ."
+         sh "docker images"
+         sh "docker run helloworld"
+       }
+    }         
+}
 }
