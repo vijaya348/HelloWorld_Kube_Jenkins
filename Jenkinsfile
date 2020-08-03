@@ -10,9 +10,9 @@ pipeline {
         }
      stage('Package'){
       steps {
-         bat "docker build -t helloworld ."
-         bat "docker images"
-         bat "docker run helloworld"
+         sh "docker build -t helloworld ."
+         sh "docker images"
+         sh "docker run helloworld"
        }
     }         
 }
