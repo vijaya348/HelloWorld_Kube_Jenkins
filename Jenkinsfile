@@ -11,14 +11,12 @@ pipeline {
         
            
    stage('Package'){
-      steps{
-         bat docker build -t helloworld .
-         bat docker images
-         bat docker run helloworld
-         
-   }
+      steps {
+         bat "docker build -t helloworld ."
+         bat "docker images"
+         bat "docker run helloworld"
+       }
     }         
-    
 }
 
 
