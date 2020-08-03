@@ -10,18 +10,15 @@ pipeline {
         }
         
            
-   stage('Initialize'){
+   stage('Package'){
       steps{
-         step{
-        def dockerHome = tool 'docker'
-      }
-      step
-      {
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+         bat docker build -t helloworld .
+         bat docker images
+         bat docker run helloworld
+         
    }
     }         
-    }
+    
 }
 
 
