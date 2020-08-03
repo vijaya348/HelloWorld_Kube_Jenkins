@@ -1,12 +1,19 @@
 pipeline {
-    agent { 
-        docker true
-    }
+   agent { dockerfile true }
+
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                echo 'Hello!'
+                echo 'Building..'
+                bat "mvn clean install"
             }
         }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                bat "mvn test"
+            }
+        }
+                
     }
 }
