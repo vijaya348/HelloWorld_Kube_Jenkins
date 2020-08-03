@@ -12,7 +12,7 @@ pipeline {
       steps {
          bat "docker build -t helloworld ."
          bat "docker images"
-         bat "docker run --publish=8081:8081 --volume=/c/Users/ helloworld"
+         bat "docker run -d --name helloworld -p 8081:8081 -helloworld"
        }
     }         
 }
