@@ -2,7 +2,7 @@ pipeline {
    
    environment {
     registry = "jyotisma/repo1"
-    registryCredential = 'dockerhub_id'
+    registryCredential = 'dockerhub_id1'
    }
    
     agent any 
