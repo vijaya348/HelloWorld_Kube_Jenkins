@@ -30,6 +30,16 @@ stages {
             }
                       
     }
+   
+    stage('Deployment in Dev') { 
+            steps { 
+                bat "kubectl apply -f deployment.yaml"
+                 bat "kubectl get deployments"
+                 bat "kubectl get services"
+                             }
+                      
+    }
+   
 }
 
 }
