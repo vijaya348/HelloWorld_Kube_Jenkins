@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          
+          image: docker.io/jyotisma/repo1:51
           ports:
             - containerPort: 8080
               protocol: TCP
