@@ -1,6 +1,11 @@
 pipeline {
    agent { dockerfile true }
 
+   environment {
+    registry = "jyotisma/repo1"
+    registryCredential = 'dockerhub_id'
+   }
+   
     stages {
         stage('Build') {
             steps {
@@ -12,8 +17,9 @@ pipeline {
       steps {
          bat "docker build -t helloworld ."
          bat "docker images"
+         bat "docker run helloworld"
          
-         bat "docker run --publish=7474:7474 --volume=/c/Users/User/hello:/hello helloworld"
+         
          
        }
     }         
