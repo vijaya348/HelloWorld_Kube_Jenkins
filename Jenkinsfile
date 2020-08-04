@@ -1,6 +1,5 @@
 pipeline {
-   agent { dockerfile true }
-
+   
    environment {
     registry = "jyotisma/repo1"
     registryCredential = 'dockerhub_id'
@@ -32,7 +31,7 @@ stages {
                 } 
             }
         } 
-                } 
+               
     }
 }
 
