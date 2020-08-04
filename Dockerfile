@@ -1,6 +1,6 @@
 FROM java:8
-mkdir example
-cd example
+RUN mkdir example
+RUN cd example
 ENV PATH ${PWD}
 WORKDIR ${PWD}
 COPY /target/gs-maven-0.1.0.jar gs-maven-0.1.0.jar
