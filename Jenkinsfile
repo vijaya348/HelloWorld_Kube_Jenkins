@@ -12,7 +12,7 @@ pipeline {
       steps {
          bat "docker build -t helloworld ."
          bat "docker images"
-         bat "docker run -v /d/HelloWorld_Docker_Jenkins - Copy:/helloworld helloworld"
+         bat "docker run -v /$PWD:/$PWD helloworld"
        }
     }         
 }
