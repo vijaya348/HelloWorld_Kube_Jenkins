@@ -1,6 +1,8 @@
 FROM java:8
-ENV PATH c/Users
-WORKDIR $PATH
-EXPOSE 8080
-ADD /target/gs-maven-0.1.0.jar gs-maven-0.1.0.jar
+mkdir example
+cd example
+ENV PATH ${PWD}
+WORKDIR ${PWD}
+COPY /target/gs-maven-0.1.0.jar gs-maven-0.1.0.jar
 ENTRYPOINT ["java","-jar","gs-maven-0.1.0.jar"]
+EXPOSE 8080
