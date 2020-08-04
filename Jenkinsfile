@@ -7,12 +7,8 @@ pipeline {
    
     agent any 
 stages { 
-        stage('Cloning our Git') { 
-            steps { 
-                git 'https://github.com/vijaya348/HelloWorld_Docker_Jenkins.git' 
-            }
-       } 
-        stage('Building our image') { 
+        
+        stage('Building and Package the image') { 
             steps { 
 
                script { 
@@ -24,7 +20,7 @@ stages {
             } 
 
         }
-        stage('Deploy our image') { 
+        stage('Push the image to Docker Hub') { 
             steps { 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
