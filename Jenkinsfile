@@ -6,22 +6,35 @@ pipeline {
     registryCredential = 'dockerhub_id'
    }
    
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                bat "mvn clean install"
+    agent any 
+stages { 
+        stage('Cloning our Git') { 
+            steps { 
+                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
             }
+       } 
+        stage('Building our image') { 
+            steps { 
+
+               script { 
+
+                   dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+
         }
-     stage('Package'){
-      steps {
-         bat "docker build -t helloworld ."
-         bat "docker images"
-         bat "docker run helloworld"
-         
-         
-         
-       }
-    }         
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
+                } 
+    }
 }
+
 }
+
