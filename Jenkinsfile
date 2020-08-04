@@ -18,6 +18,7 @@ stages {
                script { 
 
                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                   bat "docker run helloworld"
                 }
             } 
 
