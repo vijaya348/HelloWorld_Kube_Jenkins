@@ -38,13 +38,7 @@ stages {
                         dockerImage.pull()
                bat "kubectl version"
                        bat "kubectl cluster-info"
-                       bat "kubectl get nodes"
-                bat "kubectl create -f deployment.yaml"
-                 bat "kubectl get deployments"
-                 bat "kubectl get services"
-                       bat "kubectl get pod"
-                       bat "kubectl get node"
-                             }
+                       
                }
             }
                       
