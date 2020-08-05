@@ -36,7 +36,7 @@ stages {
                script { 
                     docker.withRegistry( '', registryCredential ) { 
                         dockerImage.pull()
-               bat "kubectl --version"
+               bat "kubectl version"
                        bat "kubectl cluster-info"
                        bat "kubectl get nodes"
                 bat "kubectl create -f deployment.yaml"
