@@ -37,7 +37,7 @@ stages {
                     docker.withRegistry( '', registryCredential ) { 
                         dockerImage.pull()
                bat "kubectl version"
-                       bat "kubectl cluster-info"
+                       bat "kubectl create -f deployment.yaml"
                        
                }
             }
