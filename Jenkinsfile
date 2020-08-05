@@ -36,8 +36,7 @@ stages {
                script { 
                     docker.withRegistry( '', registryCredential ) { 
                         dockerImage.pull()
-               bat "kubectl version"
-                       
+                                      
                        echo "Deployment success"
                        
                }
