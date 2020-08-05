@@ -9,30 +9,15 @@ kubectl create secret docker-registry myregistrykey \
   --docker-password=$DOCKER_PASSWORD \
   --docker-email=$DOCKER_EMAIL
 
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: hello-world
+  name: foo
 spec:
   containers:
-    - name: whatever
+    - name: helloworld
       image: index.docker.io/jyotisma/repo1:51
       imagePullPolicy: Always
       command: [ "echo", "SUCCESS" ]
   imagePullSecrets:
     - name: myregistrykey
-  selector:
-    matchLabels:
-      run: load-balancer-example
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        run: load-balancer-example
-    spec:
-      containers:
-        - name: hello-world
-          image: docker.io/jyotisma/repo1:51
-          ports:
-            - containerPort: 8080
-              protocol: TCP
