@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: helloworld
-      image: jyotisma/repo1:51
+      image: jyotisma/repo1:+ ":$BUILD_NUMBER"
       ports:
       - containerPort: 3000  
   
