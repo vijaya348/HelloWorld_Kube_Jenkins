@@ -40,6 +40,8 @@ stages {
                 bat "kubectl create -f deployment.yaml"
                  bat "kubectl get deployments"
                  bat "kubectl get services"
+                       bat "kubectl get pod"
+                       bat "kubectl get node"
                              }
                }
             }
