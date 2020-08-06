@@ -31,7 +31,7 @@ stages {
                       
     }
    
-    stage('Deployment in Dev') { 
+    stage('Deployment in Dev') {
             steps { 
                script { 
                     docker.withRegistry( '', registryCredential ) { 
