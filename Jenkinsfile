@@ -35,6 +35,7 @@ stages {
             steps { 
                script { 
                     docker.withRegistry( '', registryCredential ) { 
+                       dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                         dockerImage.pull()
                                       bat "kubectl create -f deployment.yaml"
                        echo "Deployment success"
