@@ -7,12 +7,12 @@ pipeline {
    
     agent any 
     stages {         
-        stage('Build and Test') { 
-            steps { 
+        stage ('Build and Test') { 
+                  steps { 
                    bat "mvn clean install"
                    }
                
-               stage('Docker Image Build')
+               stage ('Docker Image Build')
                {
                   steps
                   {
