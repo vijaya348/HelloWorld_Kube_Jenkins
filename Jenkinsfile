@@ -8,11 +8,15 @@ pipeline {
     agent any 
 stages { 
         
-        stage('Building and Package the image') { 
+        stage('Building and Test') { 
             steps { 
 
                script { 
-                   bat "mvn clean package"
+                   bat "mvn clean install"
+               }
+               
+               stage('Docker Image Build')
+               {
                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                    bat "docker images"
                    bat "docker run helloworld"
@@ -20,7 +24,7 @@ stages {
             } 
 
         }
-        stage('Push the image to Docker Hub') { 
+        stage('Docker Image Push to Repo') { 
             steps { 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
@@ -37,7 +41,10 @@ stages {
                     docker.withRegistry( '', registryCredential ) { 
                        dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                         dockerImage.pull()
-                                                             echo "Deployment success"
+                       bat "minikube start"
+                       bat "kubectl create -f deployment.yaml"
+                       bat "kubectl get pods"
+                       echo "Deployment success"
                        
                }
             }
