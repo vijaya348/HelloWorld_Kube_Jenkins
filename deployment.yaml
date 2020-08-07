@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: jyotisma/repo1:51
+        image: jyotisma/repo1:latest
         ports:
         - containerPort: 8181
