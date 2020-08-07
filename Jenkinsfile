@@ -11,12 +11,14 @@ stages {
         stage('Building and Test') { 
             steps { 
 
-               script { 
                    bat "mvn clean install"
                }
                
                stage('Docker Image Build')
                {
+                  steps
+                  {
+                      script { 
                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                    bat "docker images"
                    bat "docker run helloworld"
