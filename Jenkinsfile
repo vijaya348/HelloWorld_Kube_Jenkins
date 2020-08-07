@@ -42,10 +42,7 @@ pipeline {
                     docker.withRegistry( '', registryCredential ) { 
                        dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                         dockerImage.pull()
-                       bat "minikube start"
-                       bat "kubectl create -f deployment.yaml"
-                       bat "kubectl get pods"
-                       echo "Deployment success"
+                                              echo "Deployment success"
                        
                }
             }
