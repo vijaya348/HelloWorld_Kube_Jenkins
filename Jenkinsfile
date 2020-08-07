@@ -6,19 +6,18 @@ pipeline {
    }
    
     agent any 
-stages { 
-        
-        stage('Building and Test') { 
+    stages {         
+        stage('Build and Test') { 
             steps { 
-
                    bat "mvn clean install"
-               }
+                   }
                
                stage('Docker Image Build')
                {
                   steps
                   {
-                      script { 
+                      script 
+                     { 
                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                    bat "docker images"
                    bat "docker run helloworld"
